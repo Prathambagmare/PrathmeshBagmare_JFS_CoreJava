@@ -1,0 +1,23 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+public class SiandCi {
+
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Amount Borrowed (P)");
+        double P = scanner.nextDouble();
+        System.out.println("Enter Number of Years (N)");
+        double N = scanner.nextDouble();
+        System.out.println("Enter Rate of Interest (R)");
+        double R = scanner.nextDouble();
+
+        System.out.println("\n Simple Interest : "+(P*N*R)/100);
+        System.out.println(" Compound Interest : "+((P*(Math.pow((1+R/100),N)))-P));
+
+    }
+
+}

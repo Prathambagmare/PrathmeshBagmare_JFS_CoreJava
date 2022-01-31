@@ -1,0 +1,27 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+public class DeclareResult {
+
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Physic Marks");
+        double P = scanner.nextDouble();
+        System.out.println("Enter Chemistry Marks");
+        double C = scanner.nextDouble();
+        System.out.println("Enter Maths Marks");
+        double M = scanner.nextDouble();
+
+        if((P>60)&(C>60)&(M>60))
+            System.out.println("Passed");
+        else if((P>60)&(C>60) | ( (P>60)&(M>60) ) | ((C>60)&(M>60)))
+        {
+            System.out.println("Promoted");
+        }
+        else
+            System.out.println("Failed");
+    }
+}

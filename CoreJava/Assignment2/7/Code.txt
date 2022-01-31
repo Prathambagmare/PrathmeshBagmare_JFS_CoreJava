@@ -1,0 +1,184 @@
+package Capgemini;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+abstract class DessertItem{
+   static Map<String,Double> candyList = new HashMap<>();
+   static Map<String,Double> cookieList = new HashMap<>();
+   static Map<String,Double> iceCreamList = new HashMap<>();
+   abstract void putItems(String name,double cost);
+    abstract double getCost(String name);
+}
+
+class Candy extends DessertItem{
+
+
+    void putItems(String name,double cost){
+        candyList.put(name,cost);
+    }
+
+    @Override
+    double getCost(String name) {
+        return candyList.get(name);
+    }
+}
+class Cookie extends DessertItem{
+
+    @Override
+    void putItems(String name,double cost)
+    {
+        cookieList.put(name,cost);
+    }
+
+
+    @Override
+    double getCost(String name) {
+        return cookieList.get(name);
+    }
+}
+class IceCream extends DessertItem{
+
+
+    @Override
+    double getCost(String name) {
+        return iceCreamList.get(name);
+    }
+
+    @Override
+    void putItems(String name, double cost) {
+        iceCreamList.put(name,cost);
+    }
+}
+
+
+public class MainClass {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int i = 1;
+do {
+    System.out.println("------- Welcome to Dessert Shop -------\n");
+    System.out.println("1. Owner ");
+    System.out.println("2. Customer ");
+    System.out.print("\nSelect your role : ");
+    int role = scanner.nextInt();
+    switch (role) {
+        case 1:
+            addItem();
+            break;
+        case 2:
+          placeOrder();
+            break;
+
+
+    }
+    i++;
+}while (i<=2);
+
+
+
+    }
+
+    static void placeOrder(){
+        Scanner scanner = new Scanner(System.in);
+        int type;
+        System.out.println("\n---- Deserts Available ----");
+        String more = "Y";
+do {
+    String order;
+    System.out.println("\n1. Candy  ");
+    System.out.println("2. Cookie  ");
+    System.out.print("3. Ice Cream   \n\nPlease Select any type : ");
+    type = scanner.nextInt();
+    switch (type) {
+        case 1:
+            System.out.println("\n\n Candies available : ");
+            for (Map.Entry<String, Double> entry : DessertItem.candyList.entrySet()) {
+                System.out.println(" * " + entry.getKey() + " $" + entry.getValue());
+            }
+            System.out.print("\n Select any one : ");
+            order = scanner.next();
+            if (Candy.candyList.containsKey(order))
+                System.out.println("Your order for " + order + " of cost $" + new Candy().getCost(order) + " is placed please wait");
+            break;
+        case 2:
+            System.out.println("\n Cookies available : ");
+
+            for (Map.Entry<String, Double> entry : DessertItem.cookieList.entrySet()) {
+                System.out.println("* " + entry.getKey() + " $ " + entry.getValue());
+            }
+            System.out.print("\n Select any one : ");
+            order = scanner.next();
+            if (Cookie.cookieList.containsKey(order))
+                System.out.println("\nYour order for " + order + " of cost \u20AC" + new Cookie().getCost(order) + " is placed please wait");
+            break;
+        case 3:
+            System.out.println("\n Ice Creams available : ");
+            for (Map.Entry<String, Double> entry : DessertItem.iceCreamList.entrySet()) {
+                System.out.println("* " + entry.getKey() + " $ " + entry.getValue());
+            }
+            System.out.print("\n Select any one : ");
+            order = scanner.next();
+            if (IceCream.iceCreamList.containsKey(order))
+                System.out.println("Your order for " + order + " of cost \u20B9" + new IceCream().getCost(order) + " is placed please wait");
+
+            break;
+        default:
+            System.out.println("Enter Valid ");
+    }
+    System.out.print("\nOrder more (Y/N): ");
+    more = scanner.next();
+}
+while(more.equals("Y"));
+    }
+
+    static  void addItem()
+    {
+        int times = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nChoose the Item to Add : ");
+        do {
+            System.out.println("\n1. Candy ");
+            System.out.println("2. Cookie ");
+            System.out.println("3. Ice Cream ");
+            System.out.println("4. Done");
+            System.out.print("\nSelect your Item :");
+            int item = scanner.nextInt();
+            String name;
+            double cost;
+            switch (item) {
+                case 1:
+                    System.out.print("\nEnter Name of Candy :");
+                    name = scanner.next();
+                    System.out.print("Enter Cost of "+name+" : $ ");
+                    cost = scanner.nextDouble();
+                    new Candy().putItems(name,cost);
+                    break;
+                case 2:
+                    System.out.print("\nEnter Name of Cookie :");
+                    name = scanner.next();
+                    System.out.print("Enter Cost of "+name+" : \u20AC ");
+                    cost = scanner.nextDouble();
+                    new Cookie().putItems(name,cost);
+                    break;
+                case 3:
+                    System.out.print("\nEnter Name of Ice Cream :");
+                    name = scanner.next();
+                    System.out.print("Enter Cost of "+name+" : \u20B9 ");
+                    cost = scanner.nextDouble();
+                    new IceCream().putItems(name,cost);
+                    break;
+                case 4:
+                    times++;
+                    System.out.println("\nDessert items is added in storage \n");
+                    break;
+                default:
+                    System.out.println("PLease enter valid ");
+
+
+            }
+        }while(times<1);
+    }
+
+}

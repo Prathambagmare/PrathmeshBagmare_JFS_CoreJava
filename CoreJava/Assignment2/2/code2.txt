@@ -1,0 +1,69 @@
+package Capgemini;
+
+class Employee {
+    String name;
+    int salary;
+
+    Employee(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    int getSalary() {
+        return salary;
+    }
+}
+
+class Manager extends Employee {
+    int incentive = 0;
+
+    Manager(String name, int salary) {
+        super(name, salary);
+    }
+
+    public void setIncentive(int incentive) {
+        this.incentive = incentive;
+    }
+
+    int getSalary() {
+        return incentive + salary;
+    }
+
+}
+
+class Labour extends Employee {
+
+    int overTime = 0;
+
+    Labour(String name, int salary) {
+        super(name, salary);
+    }
+
+    public void setOverTime(int overTime) {
+        this.overTime = overTime;
+    }
+
+    int getSalary() {
+        return overTime + salary;
+    }
+}
+
+class TotalSalary {
+
+    public static void main(String[] args) {
+        Employee employee = new Employee("Pratik", 30000);
+        Manager manager = new Manager("Pratham", 120000);
+        Labour labour = new Labour("Rohit", 20000);
+
+        //Manager get incentive of 40000
+        manager.setIncentive(40000);
+
+        //Labour get OverTime salary
+        labour.setOverTime(1000);
+
+        System.out.println(" Salary of : \n\n" + employee.name + "(Employee) : \u20B9 " + employee.getSalary() + "\n" +
+                manager.name + "(Manager) : \u20B9 " + manager.getSalary() +
+                "\n" + labour.name + "(Labour) : \u20B9 " + labour.getSalary());
+
+    }
+}

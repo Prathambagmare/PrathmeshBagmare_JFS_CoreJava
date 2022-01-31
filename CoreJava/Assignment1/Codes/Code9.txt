@@ -1,0 +1,30 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+public class Average_and_Total {
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter student1 marks in A,B and C ");
+        int s1A = scanner.nextInt();
+        int s1B = scanner.nextInt();
+        int s1C = scanner.nextInt();
+        System.out.println("Enter student2 marks in A,B and C ");
+        int s2A = scanner.nextInt();
+        int s2B = scanner.nextInt();
+        int s2C = scanner.nextInt();
+        System.out.println("Enter student2 marks in A,B and C ");
+        int s3A = scanner.nextInt();
+        int s3B = scanner.nextInt();
+        int s3C = scanner.nextInt();
+        System.out.println("Total scored by Student1 is " +(s1A+s1B+s1C)+" and average is "+(double)((s1A+s1B+s1C)/3));
+        System.out.println("Total scored by Student2 is " +(s2A+s2B+s2C)+" and average is "+(double)((s2A+s2B+s2C)/3));
+        System.out.println("Total scored by Student3 is " +(s3A+s3B+s3C)+" and average is "+(double)((s3A+s3B+s3C)/3));
+System.out.println("Total scored by Students in Subject A is : "+(s1A+s2A+s3A)+" and Average is "+(double)((s1A+s2A+s3A)/3));
+System.out.println("Total scored by Students in Subject B is : "+(s1B+s2B+s3B)+" and Average is "+(double)((s1B+s2B+s3B)/3));
+System.out.println("Total scored by Students in Subject C is : "+(s1C+s2C+s3C)+" and Average is "+(double)((s1C+s2C+s3C)/3));
+
+       }
+
+}

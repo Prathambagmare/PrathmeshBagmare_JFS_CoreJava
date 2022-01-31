@@ -1,0 +1,25 @@
+package Capgemini;
+
+public class Singleton {
+
+    static Singleton obj = new Singleton();
+
+    private Singleton() {
+        System.out.println("Inside Singleton Constructor");
+    }
+
+    public static Singleton getInstance() {
+        return obj;
+    }
+
+}
+
+class Temp extends Singleton{
+
+
+
+
+// Singletone class cannot inherited because it has private constructor i.e. there is no default constructor.
+
+
+}

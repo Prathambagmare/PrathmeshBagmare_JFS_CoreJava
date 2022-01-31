@@ -1,0 +1,21 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+public class IncomeTax {
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        int arr[] = new int[]{5,12,14,6,78,19,1,23,26,35,37,7,52,86,47};
+        int count = 0;
+        System.out.println("Value to be search is ");
+        int no = scanner.nextInt();
+        for(int a:arr)
+            if(no == a){
+                          System.out.println(no + " is present in Array");
+                count++;
+            } 
+        if (count==0)
+            System.out.println(no+" is not present");
+    }
+}

@@ -1,0 +1,47 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+abstract class Persistance{
+    String number;
+    abstract void persist(String number);
+}
+class FilePersistance extends Persistance{
+
+    void persist(String number)
+    {
+        this.number = number;
+        System.out.println("Welcome to AirLine ");
+    }
+
+}
+
+class DatabasePersistance extends Persistance{
+    void persist(String number)
+    {
+        this.number = number;
+        System.out.println("Sorry you cannot enter");}
+
+
+}
+
+
+public class MainClass {
+    public static void main(String[] args) {
+        Persistance persistance;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("PLease enter your passport number :");
+        String number = scanner.next();
+        if(number.length() == 9 )
+        {
+            persistance = new FilePersistance();
+
+        }
+        else{
+            persistance = new DatabasePersistance();
+        }
+
+        persistance.persist(number);
+
+    }
+}

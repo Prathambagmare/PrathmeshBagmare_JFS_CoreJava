@@ -1,0 +1,110 @@
+package Capgemini;
+
+import java.util.Scanner;
+class Menus {
+    static void Menu()
+    {
+        System.out.println();
+        System.out.println("Transactions Options");
+        System.out.println("1. Withdraw");
+        System.out.println("2. Deposit");
+        System.out.println("3. CheckBalance");
+        System.out.println("4. Exit");
+        System.out.print("Enter your Choice: ");
+    }
+    static void WithdrawMenu()
+    {
+        System.out.println();
+        System.out.print("Enter the amount to Withdraw: ");
+    }
+    static void DepositMenu(){
+        System.out.println();
+        System.out.print("Enter the amount to Deposit: ");
+    }
+}
+
+class InsufficientBalanceException extends Exception{
+    InsufficientBalanceException(){
+        System.out.print("Insufficient Balance! ");
+    }
+}
+
+class illegalBankTransactionException extends Exception{
+    illegalBankTransactionException()
+    {
+        System.out.print("Invalid Amount Entered! ");
+    }
+}
+
+
+class SavingAccount {
+
+    long id;
+    double balance;
+
+    SavingAccount(long id , double balance)
+    {
+        this.id = id;
+        this.balance = balance;
+    }
+
+    double withdraw(double amount){
+        try{
+            if(amount > balance)
+                throw new InsufficientBalanceException();
+            else if(amount < 0)
+                throw new illegalBankTransactionException();
+            else
+            {
+                System.out.println(amount + " Withdrawl Successful!");
+                this.balance -= amount;
+            }
+        }
+        catch(InsufficientBalanceException e){
+            System.out.println("Exception Caught: " + e);
+        }
+        catch (illegalBankTransactionException e)
+        {
+            System.out.println("Exception Caught: " + e);
+        }
+        return balance;
+    }
+    double deposit(double amount){
+        balance += amount;
+        System.out.println(amount + " has been deposited in your account");
+        return balance;
+    }
+}
+
+
+public class ExceptionHandling {
+    public static void main(String[] args) {
+        SavingAccount newAccount = new SavingAccount(10101010,5000);
+        Scanner input = new Scanner(System.in);
+        int amount , choice;
+        do {
+            Menus.Menu();
+            choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    Menus.WithdrawMenu();
+                    amount = input.nextInt();
+                    System.out.println("Balance : " + newAccount.withdraw(amount));
+                    break;
+                case 2:
+                    Menus.DepositMenu();
+                    amount = input.nextInt();
+                    System.out.println("Balance : " + newAccount.deposit(amount));
+                    break;
+                case 3:
+                    System.out.println("Current Balance: " + newAccount.balance);
+                    break;
+                case 4:
+                    System.out.println("Thank you for banking with us");
+                    break;
+            }
+        }while(choice<4);
+
+
+    }
+}

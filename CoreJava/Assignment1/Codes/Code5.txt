@@ -1,0 +1,27 @@
+package Capgemini;
+
+import java.util.Scanner;
+
+public class IncomeTax {
+
+
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your CTC");
+        double ctc = scanner.nextInt();
+        double tax = 0;
+
+        if(ctc<=180000)
+            tax = 0;
+        else if((ctc>=180001)&(ctc<=300000))
+            tax = ctc*0.10;
+        else if((ctc>=300001)&(ctc<=500000))
+            tax = ctc*0.20;
+        else if ((ctc>=500001)&(ctc<=1000000)) 
+            tax = ctc*0.30;
+        
+        System.out.println("Your Income Tax is " + tax);
+
+    }
+}
